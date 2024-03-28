@@ -3,7 +3,7 @@
     localhost:5000.
 '''
 from flask import Flask, render_template, request
-from sentimentAnalisys.sentiment_analysis import sentiment_analyzer
+from SentimentAnalysis.sentiment_analysis import sentiment_analyzer
 
 #Initiate the flask app:
 app = Flask("Sentiment Analyzer")
@@ -14,8 +14,14 @@ def sent_analyzer():
         runs sentiment analysis over it using sentiment_analysis()
         function. The output returned shows the label and its confidence 
         score for the provided text.
-    '''
+     '''
     # TODO
+    text_to_analyze = request.args.get('textToAnalyze')
+    response = sentiment_analyzer(text_to_analyze)
+    label = response['label']
+    score = response['score']
+    return "The given text has been identified as {} with a score of {}.".format(label.split('_')[1], score)
+
 
 @app.route("/")
 def render_index_page():
@@ -27,5 +33,5 @@ def render_index_page():
 if __name__ == "__main__":
     ''' This functions executes the flask app and deploys it on localhost:5000
     '''#TODO
-    app.run()
+    app.run(host="0.0.0.0", port=5000)
 

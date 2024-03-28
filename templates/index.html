@@ -18,9 +18,13 @@
                 <input type="textarea" class="form-control" id="textToAnalyze">
             </h2>
 
+            <!-- As long as you include the JavaScript file (<script src="./static/mywebscript.js"></script>) containing RunSentimentAnalysis() in your HTML template, and that JavaScript file is served correctly by Flask (usually under the /static route), your button should work as expected, triggering the RunSentimentAnalysis() function when clicked -->
+
             <div style="padding: 25px 25px 25px 25px;">
                 <button onclick="RunSentimentAnalysis()" class="btn btn-secondary">Run Sentiment Analysis</button>
             </div>
+
+            
             <div style="padding: 25px 25px 25px 25px;"></div>
             <h2 class="mb-3">
                 <label class="form-label">Result of Sentiment Analysis</label>
